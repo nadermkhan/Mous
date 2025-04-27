@@ -40,7 +40,9 @@ int main() {
     SOCKADDR_BTH sa = { 0 };
     sa.addressFamily = AF_BTH;
     sa.btAddr = 0;
-    sa.serviceClassId = GUID_NULL;
+
+    GUID emptyGuid = {0}; // MANUAL null GUID
+    sa.serviceClassId = emptyGuid;
     sa.port = BT_PORT_ANY;
 
     if (bind(serverSocket, (SOCKADDR*)&sa, sizeof(sa)) == SOCKET_ERROR) {
